@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd" >
+ 
+<struts>  
+    <constant name="struts.devMode" value="true" />  
+    <constant name="struts.convention.package.locators" value="action" />  
+    <package name="default-package" namespace="/"  extends="struts-default"  >  
+        <default-action-ref name="index" />  
+        <action name="index"  >  
+            <result>/WEB-INF/pages/index.html</result>  
+        </action>    
+    </package>  
+    
+	<package name="item" namespace="/item" extends="struts-default">
+		<action name="list" class="com.google.code.p.familyfinancial.action.InOutItemAction" method="list">
+		  <result>/WEB-INF/pages/item/list.jsp</result>
+		</action>
+		<action name="create">
+		  <result>/WEB-INF/pages/item/create.jsp</result>
+		</action>
+		<action name="store" class="com.google.code.p.familyfinancial.action.InOutItemAction" method="store">
+		  <result type="redirect">list.action</result>
+		</action>       
+	</package>
+    <package name="book" namespace="/book" extends="struts-default">
+		<action name="list" class="com.google.code.p.familyfinancial.action.BookAction" method="list">
+		  <result>/WEB-INF/pages/book/list.jsp</result>
+		</action>
+		<action name="create">
+		  <result>/WEB-INF/pages/book/create.jsp</result>
+		</action>
+		<action name="store" class="com.google.code.p.familyfinancial.action.BookAction" method="store">
+		  <result type="redirect">list.action</result>
+		</action>       
+	</package>
+</struts>  
